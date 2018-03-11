@@ -33,7 +33,7 @@ export const calculateItemLeftGutter = ({
 }) => {
   // First item
   if(index === 0) {
-    return firstAndLastGutter ? getFirstAndLastItemGutter({ gutter }) : 0;
+    return 0;
   }
   return gutter / 2;
 }
@@ -46,7 +46,7 @@ export const calculateItemRightGutter = ({
 }) => {
   // Last item
   if(index === numberOfChildren - 1) {
-    return firstAndLastGutter ? getFirstAndLastItemGutter({ gutter }) : 0;
+    return 0;
   }
   return gutter / 2;
 }
