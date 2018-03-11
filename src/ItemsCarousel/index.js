@@ -39,8 +39,8 @@ const SliderItemsWrapper = styled.div`
 const SliderItem = styled.div`
   width: ${(props) => props.width}px;
   flex-shrink: 0;
-  margin-right: ${(props) => props.rightGutter}px;
-  margin-left: ${(props) => props.leftGutter}px;
+  margin-right: ${(props) => props.last ? 0 : props.rightGutter}px;
+  margin-left: ${(props) => props.first ? 0 : props.leftGutter}px;
 `;
 
 const CarouselChevron = styled.div`
@@ -52,6 +52,12 @@ const CarouselChevron = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const MarginHolder = styled.div`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  flex-shrink: 0;
 `;
 
 const CarouselRightChevron = styled(CarouselChevron)`
@@ -119,6 +125,7 @@ class ItemsCarousel extends React.Component {
 
     const {
       containerWidth,
+      containerHeight,
     } = this.state;
     const width = calculateItemWidth({
       firstAndLastGutter,
@@ -142,9 +149,18 @@ class ItemsCarousel extends React.Component {
           <SliderItemsWrapper
             translateX={translateX}
           >
+            {
+              firstAndLastGutter ?
+              <MarginHolder
+                width={2 * gutter}
+                height={containerHeight}
+              /> : null
+            }
             {children.map((child, index) => (
               <SliderItem
                 key={index}
+                first={index === 0}
+                last={index == child.length - 1}
                 width={width}
                 leftGutter={calculateItemLeftGutter({
                   index,
@@ -161,6 +177,13 @@ class ItemsCarousel extends React.Component {
                 { React.cloneElement(child, { width })}
               </SliderItem>
             ))}
+            {
+              firstAndLastGutter ?
+              <MarginHolder
+                width={2 * gutter}
+                height={containerHeight}
+              /> : null
+            }
           </SliderItemsWrapper>
         </Measure>
       </Wrapper>
