@@ -27,6 +27,9 @@ const Wrapper = styled.div`
   width: 100%;
   overflow-x: ${(props) => props.freeScrolling ? 'scroll' : 'hidden'};
   -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SliderItemsWrapper = styled.div`
