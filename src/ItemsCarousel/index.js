@@ -59,7 +59,7 @@ const CarouselChevron = styled.div`
 
 const MarginHolder = styled.div`
   width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  height: 100%;
   flex-shrink: 0;
 `;
 
@@ -156,7 +156,6 @@ class ItemsCarousel extends React.Component {
               firstAndLastGutter ?
               <MarginHolder
                 width={2 * gutter}
-                height={containerHeight}
               /> : null
             }
             {children.map((child, index) => (
@@ -184,7 +183,6 @@ class ItemsCarousel extends React.Component {
               firstAndLastGutter ?
               <MarginHolder
                 width={2 * gutter}
-                height={containerHeight}
               /> : null
             }
           </SliderItemsWrapper>
