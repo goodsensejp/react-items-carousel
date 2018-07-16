@@ -59,7 +59,7 @@ const CarouselChevron = styled.div`
 
 const MarginHolder = styled.div`
   width: ${(props) => props.width}px;
-  height: 100%;
+  height: 10px;
   flex-shrink: 0;
 `;
 
